@@ -15,7 +15,8 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    this.head = new Node(data, this.head);
+    this.insertAt(data, 0);
+    // this.head = new Node(data, this.head);
   }
 
   size() {
@@ -29,20 +30,22 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
+    // return this.head;
   }
 
   getLast() {
-    if(!this.head){
-      return null;
-    }
-    let currentNode = this.head;
-    while(currentNode){
-      if (!currentNode.next) {
-        return currentNode;
-      }
-      currentNode = currentNode.next;
-    }
+    return this.getAt(this.size()-1);
+    // if(!this.head){
+    //   return null;
+    // }
+    // let currentNode = this.head;
+    // while(currentNode){
+    //   if (!currentNode.next) {
+    //     return currentNode;
+    //   }
+    //   currentNode = currentNode.next;
+    // }
   }
 
   clear() {
@@ -50,23 +53,25 @@ class LinkedList {
   }
 
   removeFirst() {
-    if(!this.head){
-      return null;
-    }
-    this.head = this.head.next;
+    return this.removeAt(0);
+    // if(!this.head){
+    //   return null;
+    // }
+    // this.head = this.head.next;
   }
 
   removeLast() {
-    if(!this.head){
-      return null;
-    }
-    let currentNode = this.head;
-    let prevNode = null;
-    while(currentNode.next){
-      prevNode = currentNode;
-      currentNode = currentNode.next;
-    }
-    prevNode ? prevNode.next = null : this.head = null;
+    this.removeAt(this.size()-1);
+    // if(!this.head){
+    //   return null;
+    // }
+    // let currentNode = this.head;
+    // let prevNode = null;
+    // while(currentNode.next){
+    //   prevNode = currentNode;
+    //   currentNode = currentNode.next;
+    // }
+    // prevNode ? prevNode.next = null : this.head = null;
   }
 
   insertLast(data) {
@@ -107,7 +112,7 @@ class LinkedList {
       return;
     }
     if(this.size() <= index) {
-      this.getAt(this.size()-1).next = new Node(data);
+      this.getLast().next = new Node(data);
       return;
     }
     const prevNode = this.getAt(index-1);
